@@ -11,3 +11,12 @@ typedef struct btreeNode
     int leaf; //0 OR 1 : whether the node is a leaf or not
     
 } btreeNode;
+btreePointer root=NULL;
+
+btreePointer search(int k){
+    btreePointer p=root;
+    int i;
+    for(i=0;i<p->n;i++){
+
+    }
+}
