@@ -13,10 +13,10 @@ typedef struct btreeNode
 } btreeNode;
 btreePointer root=NULL;
 
-btreePointer search(int k){
-    btreePointer p=root;
-    int i;
-    for(i=0;i<p->n;i++){
+// btreePointer search(int k){
+//     btreePointer p=root;
+//     int i;
+//     for(i=0;i<p->n;i++){
 
-    }
+//     }
 }
