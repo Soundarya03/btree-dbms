@@ -3,7 +3,7 @@ typedef struct btreeNode *btreePointer;
 
 typedef struct btreeNode
 {
-    int *key;               //array of keys
+    int *keys;              //array of keys
     btreePointer *children; //array of pointers to children;
 
     int t;    //minimum degree(no. of keys that should be there)
