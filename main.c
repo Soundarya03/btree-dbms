@@ -4,11 +4,6 @@
 */
 #include <stdio.h>
 #include <string.h>
-#include "btree.c"
-#include "insert.c"
-
-btreeNode *root; //pointer to root
-
 int empty(string input)
 {
     if(input) //condition to check if empty.  
@@ -24,4 +19,3 @@ int main()
     }
     return 0;
 }
-
