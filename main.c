@@ -6,6 +6,7 @@
 #include <string.h>
 #include "btree.c"
 #include "insert.c"
+#include "search.c"
 
 btreeNode *root; //pointer to root
 
