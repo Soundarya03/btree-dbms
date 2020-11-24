@@ -1,11 +1,10 @@
 #include "btree.c"
-#include "main.c"
 
 btreePointer search(btreePointer root,int k){
     btreePointer p=root; // first points to the root node 
     int n=p->n; // n is the number of keys in the node
     int i=0;
-    while(i<n&&k>keys[i]) // to find the first greater key than "k"
+    while(i<n&&k>p->keys[i]) // to find the first greater key than "k"
         i++;  // increment until the condition results in false
     
     // if the k equals the key at position i

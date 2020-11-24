@@ -1,4 +1,6 @@
 //this file can contain the data structure definition
+#include <stdio.h>
+#include <string.h>
 typedef struct btreeNode *btreePointer;
 
 typedef struct btreeNode

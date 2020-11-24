@@ -1,5 +1,4 @@
 #include "btree.c"
-#include "main.c"
 
 void insert(btreePointer *root, int k)
 {
