@@ -8,12 +8,12 @@ btreePointer search(btreePointer root,int k){
         i++;  // increment until the condition results in false
     
     // if the k equals the key at position i
-    if(p->keys[i]==k)
+    if(p->keys[--i]==k)  
         return p;  // then return pointer to that node
     
     // if the node is a leaf node and the key is not found then we return NULL
     if(p->leaf==1)
         return NULL;
     
-    return search(p->children[i],k); // recursive call 
+    return search(p->children[++i],k); // recursive call 
 }
