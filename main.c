@@ -4,26 +4,33 @@
 */
 #include <stdio.h>
 #include <string.h>
-#include "btree.c"
-#include "insert.c"
-#include "search.c"
+#include <stdlib.h>
+#include "command-helper.c"
+// #include "btree.c"
+// #include "insert.c"
 
-btreeNode *root; //pointer to root
+//btreeNode *root; //pointer to root
 
-/*
-int empty(string input)
-{
-    if(input) //condition to check if empty.  
-}
 int main()
 {
-    while(1)
+    printf("DBMS using B Trees\n");
+    printf("Enter .help for help or .exit to exit the Database Management System\n");
+    char *input;
+    size_t inputLength = 0;
+    ssize_t bytesRead;
+
+    while (1)
     {
-        //input the string check how
 
-        if(empty(input)) continue;
-
+        bytesRead = getline(&input, &inputLength, stdin);
+       
+        *(input+bytesRead-1)='\0';
+        if (*input == '.' || *input== '-') //for exit and help
+           command(input);
+        else
+        {
+            printf("Unrecognized command '%s'\nUse command .help for help\n", input);
+        }
     }
     return 0;
 }
-*/
