@@ -8,7 +8,30 @@ typedef enum
 } CommandResult;
 void help()
 {
-    printf("this is help");
+    printf("===============THIS IS THE HELP SECTION===============\n");
+    printf("\n\n");
+    printf("VALID DATATYPES\n");
+    printf("• NUM : An integer of 32-bits.\n• STR : A string of 100 bytes.\n\n\n");
+    printf("COMMAND : -create\n");
+    printf("Syntax : -create <ColName1>(i32) <ColName2>(<DataType2>) ...\n        The first column is always a unique key of type i32. This is the key used to store data in the B-tree. The rest of the columm can have different types and names. Column names cannot be repeated. A table can be created only once for a file.\n");
+    printf("\n");
+    printf("COMMAND : -insert\n");
+    printf("Syntax : -insert key_value data_1 data_2 ...\n");
+    printf("        The key_value must be of type NUM. The remaining data values must be of the same type as the column it belongs to. The given record is inserted into the database.\n");
+    printf("\nCOMMAND : -delete\n");
+    printf("Syntax : -delete key_value\n");
+    printf("        This command deletes a record containing the key_value. If the key_value doesn't exist, it will throw an error.\n");
+    printf("\n");
+    printf("COMMAND : -select\n");
+    printf("Syntax : -select key_value\n");
+    printf("        This command selects certain record of key_value and displays it. If key_value is * , then it will print out all records. If the key_value doesn't exist, it will throw an error.\n");
+    printf("\nCOMMAND : .exit\n");
+    printf("Syntax : .exit\n");
+    printf("        This command allows the user to exit the database.\n");
+    printf("\n");
+    printf("==============================END OF HELP ================================\n");
+
+
 }
 CommandResult prepareCreate(char *input)
 {
