@@ -1,7 +1,7 @@
 
 
-btreePointer search(btreePointer *root,int k){
-    btreePointer *p=root; // first points to the root node 
+btreePointer search(btreePointer root,int k){
+    btreePointer p=root; // first points to the root node 
     int n=p->n; // n is the number of keys in the node
     int i=0;
     while(i<n&&k>p->keys[i]) // to find the first greater key than "k"

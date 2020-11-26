@@ -39,7 +39,7 @@ void borrowFromNext(int index, btreeNode *node);
 void merge(int index,btreeNode *node);
 
 //Initially called to remove a key
-void removeKey(btreePointer *root,int k);
+void removeKey(btreePointer root,int k);
 
 
 // A utility function that returns the index of the first key that is 
@@ -337,7 +337,7 @@ void merge(int index,btreeNode *node)
 }
 
 //Initially called to remove a key
-void removeKey(btreePointer *root,int k)
+void removeKey(btreePointer root,int k)
 {
     if(!(root))
     {

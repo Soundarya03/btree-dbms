@@ -6,8 +6,8 @@
 #include "search.c"
 #include "delete.h"
 
-btreePointer *root=NULL;
-btreePointer *result;
+btreePointer root=NULL;
+btreePointer result;
 void main()
 {
     int ch,value;
