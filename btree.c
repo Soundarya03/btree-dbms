@@ -3,7 +3,7 @@
 #include <string.h>
 typedef struct btreeNode *btreePointer;
 
-typedef struct btreeNode
+typedef struct 
 {
     int *keys;              //array of keys
     btreePointer *children; //array of pointers to children;
