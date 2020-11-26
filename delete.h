@@ -1,45 +1,45 @@
-#include "btree.c"
-#include "main.c"
+
+
 
 
 // A function that returns the index of the first key that is greater 
 // or equal to k 
-int findKey(int k, btreeNode *node)
+int findKey(int k, btreeNode *node);
 
 // A wrapper function to remove the key k in subtree rooted with 
 // this node. 
-void removeFromNode(int k, btreeNode *node)
+void removeFromNode(int k, btreeNode *node);
 
 // A function to remove the index-th key from this node - which is a leaf node
-void removeFromLeaf (int index, btreeNode *node)
+void removeFromLeaf (int index, btreeNode *node);
 
 // A function to remove the index-th key from this node - which is a non-leaf node 
-void removeFromNonLeaf(int index, btreeNode *node)
+void removeFromNonLeaf(int index, btreeNode *node);
 
 // A function to get predecessor of keys[index] 
-int getPred(int index, btreeNode *p)
+int getPred(int index, btreeNode *p);
 
 // A function to get the successor of the key- where the key 
 // is present in the index-th position in the node 
-int getSucc(int index, btreeNode *p)
+int getSucc(int index, btreeNode *p);
 
 // A function to fill child children[idx] which has less than t-1 keys 
-void fill (int index, btreeNode *node)
+void fill (int index, btreeNode *node);
 
 // A function to borrow a key from children[index-1] and insert it 
 // into children[index] 
-void borrowFromPrev(int index, btreeNode *node)
+void borrowFromPrev(int index, btreeNode *node);
 
 // A function to borrow a key from the children[index+1] and place 
 // it in children[index] 
-void borrowFromNext(int index, btreeNode *node)
+void borrowFromNext(int index, btreeNode *node);
 
 // A function to merge children[index] with children[index+1] 
 // children[idx+1] is freed after merging 
-void merge(int index,btreeNode *node)
+void merge(int index,btreeNode *node);
 
 //Initially called to remove a key
-void remove(int k)
+void removeKey(btreePointer *root,int k);
 
 
 // A utility function that returns the index of the first key that is 
@@ -337,7 +337,7 @@ void merge(int index,btreeNode *node)
 }
 
 //Initially called to remove a key
-void remove(int k)
+void removeKey(btreePointer *root,int k)
 {
     if(!(root))
     {

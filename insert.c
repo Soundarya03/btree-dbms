@@ -1,4 +1,3 @@
-#include "btree.c"
 
 // A utility function to split the child of this node
 // Note that child must be full when this function is called
@@ -6,14 +5,14 @@ void splitChild(btreePointer node, int i, btreePointer child)
 {
     // Create a new node which is going to store (t-1) keys
     // of y
-    btreeNode *z = (btreePointer)malloc(sizeof(btreeNode));
-    z->t = child->t;
-    z->leaf = child->leaf;
-    z->n = (node->t) - 1;
+    btreeNode z = (btreePointer)malloc(sizeof(btreeNode));
+    z.t = child->t;
+    z.leaf = child->leaf;
+    z.n = (node->t) - 1;
 
     // Copy the last (t-1) keys of child to z
     for (int j = 0; j < (node->t) - 1; j++)
-        z->keys[j] = child->keys[j + (node->t)];
+        z.keys[j] = child->keys[j + (node->t)];
 
     // Copy the last t children of child to z
     if (child->leaf == 0)
