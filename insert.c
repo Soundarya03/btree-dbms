@@ -51,7 +51,7 @@ void insertNonFull(btreePointer *node, int k)
     int i = (*node)->n - 1;
 
     // If this is a leaf node
-    if ((*node)->leaf == true)
+    if ((*node)->leaf == 1)
     {
         // The following loop does two things
         // a) Finds the location of new key to be inserted
@@ -104,7 +104,7 @@ void splitChild(btreePointer node, int i, btreePointer child)
         z->keys[j] = child->keys[j + (node->t)];
 
     // Copy the last t children of child to z
-    if (child->leaf == false)
+    if (child->leaf == 0)
     {
         for (int j = 0; j < node->t; j++)
             z->children[j] = y->children[j + (node->t)];
