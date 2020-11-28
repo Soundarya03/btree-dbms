@@ -4,10 +4,10 @@
 
 //typedef struct btreeNode *btreePointer;
 
-typedef struct
+typedef struct _node
 {
-    int *keys;           //array of keys
-    btreeNode *children; //array of nodes children;
+    int *keys;              //array of keys
+    struct _node *children; //array of nodes children;
 
     int t;    //minimum degree(no. of keys that should be there)
     int n;    //current no. of keys in this node
