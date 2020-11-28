@@ -1,6 +1,6 @@
+#include "btree.c"
 
-
-btreePointer search(btreeNode *root, int k)
+btreeNode * search(btreeNode *root, int k)
 {
     btreeNode *p = root; // first points to the root node
     int n = p->n;        // n is the number of keys in the node
