@@ -132,7 +132,7 @@ void insert(btreeNode *root, int k)
         insertNonFull(root, k);
 }
 
-void main()
+/*void main()
 {
     printf("Hello world!");
-}
+}*/
