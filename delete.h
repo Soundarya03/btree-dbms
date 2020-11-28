@@ -37,7 +37,7 @@ void borrowFromNext(int index, btreeNode *node);
 void merge(int index, btreeNode *node);
 
 //Initially called to remove a key
-void removeKey(btreePointer root, int k);
+void removeKey(btreeNode *root, int k);
 
 // A utility function that returns the index of the first key that is
 // greater than or equal to k
@@ -137,11 +137,11 @@ void removeFromNonLeaf(int index, btreeNode *node)
     // the subtree rooted at children[index+1]
     // Replace k by succ
     // Recursively delete succ in children[index+1]
-    else if (p->children[index + 1]->n >= p->children[index + 1]->t)
+    else if (p->children[index + 1].n >= p->children[index + 1].t)
     {
         int succ = getSucc(index, p);
         p->keys[index] = succ;
-        removeFromNode(succ, p->children[index + 1]);
+        removeFromNode(succ, &(p->children[index + 1]));
     }
 
     // If both children[index] and children[index+1] has less that t keys,merge k and all of children[index+1]
@@ -151,7 +151,7 @@ void removeFromNonLeaf(int index, btreeNode *node)
     else
     {
         merge(index, p);
-        removeFromNode(k, p->children[index]);
+        removeFromNode(k, &(p->children[index]));
     }
     return;
 }
@@ -173,11 +173,11 @@ int getPred(int index, btreeNode *p)
 // is present in the index-th position in the node
 int getSucc(int index, btreeNode *p)
 {
-    btreeNode *cur = p->children[index + 1];
+    btreeNode *cur = &(p->children[index + 1]);
 
     // Keep moving the left most node starting from children[index+1] until we reach a leaf
     while (!(cur->leaf))
-        cur = cur->children[0];
+        cur = &(cur->children[0]);
 
     // Return the first key of the leaf
     return cur->keys[0];
@@ -190,12 +190,12 @@ void fill(int index, btreeNode *node)
 
     // If the previous child(children[index-1]) has more than t-1 keys, borrow a key
     // from that child
-    if (index != 0 && p->children[index - 1]->n >= p->children[index - 1]->t)
+    if (index != 0 && p->children[index - 1].n >= p->children[index - 1].t)
         borrowFromPrev(index, p);
 
     // If the next child(children[index+1]) has more than t-1 keys, borrow a key
     // from that child
-    else if (index != p->n && p->children[index + 1]->n >= p->children[index + 1]->t)
+    else if (index != p->n && p->children[index + 1].n >= p->children[index + 1].t)
         borrowFromNext(index, p);
 
     // Merge children[index] with its sibling
@@ -216,8 +216,8 @@ void fill(int index, btreeNode *node)
 void borrowFromPrev(int index, btreeNode *node)
 {
     btreeNode *p = node;
-    btreeNode *child = p->children[index];
-    btreeNode *sibling = p->children[index - 1];
+    btreeNode *child = &(p->children[index]);
+    btreeNode *sibling = &(p->children[index - 1]);
 
     // The last key from children[index-1] goes up to the parent and key[index-1]
     // from parent is inserted as the first key in children[index]. Thus, the  loses
@@ -256,8 +256,8 @@ void borrowFromPrev(int index, btreeNode *node)
 void borrowFromNext(int index, btreeNode *node)
 {
     btreeNode *p = node;
-    btreeNode *child = p->children[index];
-    btreeNode *sibling = p->children[index + 1];
+    btreeNode *child = &(p->children[index]);
+    btreeNode *sibling = &(p->children[index + 1]);
 
     // keys[index] is inserted as the last key in children[index]
     child->keys[(child->n)] = p->keys[index];
@@ -294,8 +294,8 @@ void borrowFromNext(int index, btreeNode *node)
 void merge(int index, btreeNode *node)
 {
     btreeNode *p = node;
-    btreeNode *child = p->children[index];
-    btreeNode *sibling = p->children[index + 1];
+    btreeNode *child = &(p->children[index]);
+    btreeNode *sibling = &(p->children[index + 1]);
 
     // Pulling a key from the current node and inserting it into (t-1)th
     // position of children[index]
@@ -333,7 +333,7 @@ void merge(int index, btreeNode *node)
 }
 
 //Initially called to remove a key
-void removeKey(btreePointer root, int k)
+void removeKey(btreeNode *root, int k)
 {
     if (!(root))
     {
@@ -352,7 +352,7 @@ void removeKey(btreePointer root, int k)
             root = NULL;
         else
         {
-            root = root->children[0];
+            root = &(root->children[0]);
         }
         // Free the old root
         free(p);

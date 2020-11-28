@@ -9,7 +9,7 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
 {
     // Create a new node which is going to store (t-1) keys
     // of child
-    btreeNode *z = (btreePointer)malloc(sizeof(btreeNode));
+    btreeNode *z = (btreeNode *)malloc(sizeof(btreeNode));
     z->t = (*child).t;
     z->leaf = (*child).leaf;
     z->n = ((*node).t) - 1;
@@ -34,7 +34,7 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
         (*node).children[j + 1] = (*node).children[j];
 
     // Link the new child to this node
-    (*node).children[i + 1] = (*z);
+    ((*node).children[i + 1]) = (*z);
 
     // A key of child will move to this node. Find the location of
     // new key and move all greater keys one space ahead
@@ -82,7 +82,7 @@ void insertNonFull(btreeNode *node, int k)
         if (((node)->children[i + 1]).n == 2 * (*node).t - 1)
         {
             // If the child is full, then split it
-            splitChild(node, i + 1, (*node).children[i + 1]);
+            splitChild(node, i + 1, &((*node).children[i + 1]));
 
             // After split, the middle key of C[i] goes up and
             // C[i] is splitted into two.  See which of the two
@@ -90,7 +90,7 @@ void insertNonFull(btreeNode *node, int k)
             if ((*node).keys[i + 1] < k)
                 i++;
         }
-        insertNonFull(((*node).children[i + 1]), k);
+        insertNonFull(&((*node).children[i + 1]), k);
     }
 }
 
@@ -108,12 +108,12 @@ void insert(btreeNode *root, int k)
     if ((*root).n == 2 * ((*root).t) - 1)
     {
         // Allocate memory for new root
-        btreeNode *s = (btreePointer)malloc(sizeof(btreeNode));
+        btreeNode *s = (btreeNode *)malloc(sizeof(btreeNode));
         s->t = (*root).t; //has degree of the root
         s->leaf = 0;      //not a leaf, obviously
 
         // Make old root as child of new root
-        s->children[0] = (root);
+        s->children[0] = (*root);
 
         // Split the old root and move 1 key to the new root
         splitChild(s, 0, (root));
