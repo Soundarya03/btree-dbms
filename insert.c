@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "btree.h"
 
@@ -78,7 +79,7 @@ void insertNonFull(btreeNode *node, int k)
             i--;
 
         // See if the found child is full
-        if ((*((*node).children[i + 1])).n == 2 * (*node).t - 1)
+        if (((node)->children[i + 1]).n == 2 * (*node).t - 1)
         {
             // If the child is full, then split it
             splitChild(node, i + 1, (*node).children[i + 1]);
