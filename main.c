@@ -6,21 +6,26 @@
 #include "search.c"
 #include "delete.c"
 
-btreeNode *root;
-btreeNode *result;
+btreeNode *root=NULL;
+btreeNode *result=NULL;
 int degree;
 
 void display(btreeNode *p){
      
-     if (p!=NULL)
+     if (p)
      {
                 int i;
                 for (i = 0; i < p->n; i++)
                         printf("%d ", p->keys[i]);
                 printf("\n");
                 for (i = 0; i <= p->n; i++)
-                        display(p->children[i]);
+                        display(&p->children[i]);
         }/*End of if*/
+        else
+        {
+            printf("1");
+        }
+        
 }
 
 void main()
