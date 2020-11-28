@@ -84,16 +84,16 @@ void removeFromNode(int k, btreeNode *node)
 
         // If the child where the key is supposed to exist has less that t keys,
         // we fill that child
-        if (p->children[index]->n < p->children[index]->t)
+        if (p->children[index].n < p->children[index].t)
             fill(index, p);
 
         // If the last child has been merged, it must have merged with the previous
         // child and so we recurse on the (index-1)th child. Else, we recurse on the
         // (index)th child which now has atleast t keys
         if (flag && index > p->n)
-            removeFromNode(k, p->children[index - 1]);
+            removeFromNode(k, &(p->children[index - 1]));
         else
-            removeFromNode(k, p->children[index]);
+            removeFromNode(k, &(p->children[index]));
     }
     return;
 }
@@ -125,11 +125,11 @@ void removeFromNonLeaf(int index, btreeNode *node)
     // find the predecessor 'pred' of k in the subtree rooted at
     // children[idx]. Replace k by pred. Recursively delete pred
     // in children[index]
-    if (p->children[index]->n >= p->children[index]->t)
+    if (p->children[index].n >= p->children[index].t)
     {
         int pred = getPred(index, p);
         p->keys[index] = pred;
-        removeFromNode(pred, p->children[index]);
+        removeFromNode(pred, &(p->children[index]));
     }
 
     // If the child children[index] has less that t keys, examine children[index+1].
@@ -159,11 +159,11 @@ void removeFromNonLeaf(int index, btreeNode *node)
 // A function to get predecessor of keys[index]
 int getPred(int index, btreeNode *p)
 {
-    btreeNode *cur = p->children[index];
+    btreeNode *cur = &(p->children[index]);
 
     // Keep moving to the right most node until we reach a leaf
     while (!(cur->leaf))
-        cur = cur->children[cur->n];
+        cur = &(cur->children[cur->n]);
 
     // Return the last key of the leaf
     return cur->keys[cur->n - 1];

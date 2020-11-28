@@ -34,7 +34,7 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
         (*node).children[j + 1] = (*node).children[j];
 
     // Link the new child to this node
-    (*node).children[i + 1] = z;
+    (*node).children[i + 1] = (*z);
 
     // A key of child will move to this node. Find the location of
     // new key and move all greater keys one space ahead
