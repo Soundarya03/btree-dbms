@@ -8,18 +8,35 @@
 
 btreeNode *root;
 btreeNode *result;
+int degree;
+
+void display(btreeNode *p){
+     
+     if (p!=NULL)
+     {
+                int i;
+                for (i = 0; i < p->n; i++)
+                        printf("%d ", p->keys[i]);
+                printf("\n");
+                for (i = 0; i <= p->n; i++)
+                        display(p->children[i]);
+        }/*End of if*/
+}
 
 void main()
 {
+    printf("Enter the degree of the tree ");
+    scanf("%d",&degree);
     root = (btreeNode *)malloc(sizeof(btreeNode));
     (*root).leaf = 1; //it's a leaf, it has no children as of now
     (*root).n = 1;    // Update number of keys in root
+    (*root).t=degree;
 
     int ch, value;
     char choice;
 menu:
     printf("=====MENU=====\n");
-    printf("1.Insert\n2.Delete\n3.Search\n4.Exit");
+    printf("1.Insert\n2.Delete\n3.Search\n4.Display\n5.Exit");
     scanf("%d",&ch);
     switch (ch)
     {
@@ -63,7 +80,9 @@ menu:
         else
             goto menu;
         break;
-    case 4:
+    case 4: display(root);
+            break;
+    case 5:
         printf("Exiting Menu");
         exit(0);
     default:
