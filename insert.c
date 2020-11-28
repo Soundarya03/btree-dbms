@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "btree.h"
 
 // A utility function to split the child of this node
 // Note that child must be full when this function is called
@@ -132,7 +131,6 @@ void insert(btreeNode *root, int k)
         insertNonFull(root, k);
 }
 
-/*void main()
-{
-    printf("Hello world!");
-}*/
+
+
+

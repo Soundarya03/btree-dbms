@@ -1,4 +1,3 @@
-#include "btree.c"
 
 btreeNode * search(btreeNode *root, int k)
 {

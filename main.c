@@ -20,6 +20,7 @@ void main()
 menu:
     printf("=====MENU=====\n");
     printf("1.Insert\n2.Delete\n3.Search\n4.Exit");
+    scanf("%d",&ch);
     switch (ch)
     {
     case 1:
@@ -28,32 +29,35 @@ menu:
         scanf("%d", &value);
         insert(root, value);
         printf("Insert another value?Press y to insert,any other key to go back to menu\n");
+        scanf("%c",&choice);
         if (choice == 'y')
             goto ins;
         else
             goto menu;
         break;
-    case 2:
-    del:
-        printf("Enter the value to be deleted\n");
-        scanf("%d", &value);
-        removeKey(root, value);
-        printf("Delete another value?Press y to delete,any other key to go back to menu\n");
-        if (choice == 'y')
-            goto del;
-        else
-            goto menu;
-        break;
+    // case 2:
+    // del:
+    //     printf("Enter the value to be deleted\n");
+    //     scanf("%d", &value);
+    //     removeKey(root, value);
+    //     printf("Delete another value?Press y to delete,any other key to go back to menu\n");
+    //     if (choice == 'y')
+    //         goto del;
+    //     else
+    //         goto menu;
+    //     break;
     case 3:
     search:
         printf("Enter the value to be searched\n");
         scanf("%d", &value);
         result = search(root, value);
         if (result != NULL)
-            printf("Value %d is present\n", &result);
+            printf("Value %d is present\n", 1);
         else
             printf("Value not present in tree");
         printf("Search for another value?Press y to search,any other key to go back to menu\n");
+        scanf("%c",&choice);
+        
         if (choice == 'y')
             goto search;
         else
