@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "btree.h"
+#include "btree.c"
 #include "insert.c"
 #include "search.c"
-#include "delete.h"
+#include "delete.c"
 
 btreeNode *root;
 btreeNode *result;
