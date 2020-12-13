@@ -18,13 +18,18 @@ void display(btreeNode *p){
                 for (i = 0; i < p->n; i++)
                         printf("%d ", p->keys[i]);
                 printf("\n");
-                for (i = 0; i <= p->n; i++)
+
+                if(p->leaf==0) // not a leaf node :)
+                {
+                     for (i = 0; i <= p->n; i++)
                         display(&p->children[i]);
-        }/*End of if*/
+                }
+        /*End of if*/
         else
         {
-            printf("1");
+            printf("leaf is 1");
         }
+     }
         
 }
 
