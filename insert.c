@@ -6,6 +6,7 @@
 // Note that child must be full when this function is called
 void splitChild(btreeNode *node, int i, btreeNode *child)
 {
+    printf("inside splitChild\n");
     // Create a new node which is going to store (t-1) keys
     // of child
     btreeNode *z = (btreeNode *)malloc(sizeof(btreeNode));
@@ -52,6 +53,7 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
 // function is called
 void insertNonFull(btreeNode *node, int k)
 {
+    printf("inside insertNonFull\n");
     // Initialize index as index of rightmost element
     int i = (*node).n - 1;
 
@@ -95,6 +97,7 @@ void insertNonFull(btreeNode *node, int k)
 
 void insert(btreeNode *root, int k)
 {
+    printf("inside insert - ");
     /*
     // If tree is empty
     if (!(*root))
@@ -104,16 +107,19 @@ void insert(btreeNode *root, int k)
     }*/
 
     // If root is full, then tree grows in height
-    if ((*root).n == 2 * ((*root).t) - 1)
+    if ((*root).n == ((*root).t))
     {
+        printf("inside the if\n");
         // Allocate memory for new root
-        btreeNode *s = (btreeNode *)malloc(sizeof(btreeNode));
+        btreeNode *s;
+        s = (btreeNode *)malloc(sizeof(btreeNode));
         s->t = (*root).t; //has degree of the root
-        s->leaf = 0;      //not a leaf, obviously
+        s->n = 1;
+        s->leaf = 0; //not a leaf, obviously
 
         // Make old root as child of new root
         s->children[0] = (*root);
-
+        printf("stops here\n");
         // Split the old root and move 1 key to the new root
         splitChild(s, 0, (root));
 
