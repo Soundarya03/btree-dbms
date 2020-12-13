@@ -1,53 +1,31 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "btree.c"
+#include "btree.h"
 #include "insert.c"
 #include "search.c"
 #include "delete.c"
+#include "display.c"
 
-btreeNode *root=NULL;
-btreeNode *result=NULL;
+btreeNode *root = NULL;
+btreeNode *result = NULL;
 int degree;
-
-void display(btreeNode *p){
-     
-     if (p)
-     {
-                int i;
-                for (i = 0; i < p->n; i++)
-                        printf("%d ", p->keys[i]);
-                printf("\n");
-
-                if(p->leaf==0) // not a leaf node :)
-                {
-                     for (i = 0; i <= p->n; i++)
-                        display(&p->children[i]);
-                }
-        /*End of if*/
-        else
-        {
-            printf("leaf is 1");
-        }
-     }
-        
-}
 
 void main()
 {
     printf("Enter the degree of the tree ");
-    scanf("%d",&degree);
+    scanf("%d", &degree);
     root = (btreeNode *)malloc(sizeof(btreeNode));
     (*root).leaf = 1; //it's a leaf, it has no children as of now
     (*root).n = 1;    // Update number of keys in root
-    (*root).t=degree;
+    (*root).t = degree;
 
     int ch, value;
     char choice;
 menu:
     printf("=====MENU=====\n");
     printf("1.Insert\n2.Delete\n3.Search\n4.Display\n5.Exit");
-    scanf("%d",&ch);
+    scanf("%d", &ch);
     switch (ch)
     {
     case 1:
@@ -56,7 +34,7 @@ menu:
         scanf("%d", &value);
         insert(root, value);
         printf("Insert another value?Press y to insert,any other key to go back to menu\n");
-        scanf("%c",&choice);
+        scanf("%c", &choice);
         if (choice == 'y')
             goto ins;
         else
@@ -83,15 +61,16 @@ menu:
         else
             printf("Value not present in tree");
         printf("Search for another value?Press y to search,any other key to go back to menu\n");
-        scanf("%c",&choice);
-        
+        scanf("%c", &choice);
+
         if (choice == 'y')
             goto search;
         else
             goto menu;
         break;
-    case 4: display(root);
-            break;
+    case 4:
+        display(root);
+        break;
     case 5:
         printf("Exiting Menu");
         exit(0);
