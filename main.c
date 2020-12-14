@@ -78,4 +78,6 @@ menu:
         printf("Invalid input.Try again\n");
         goto menu;
     }
+
+    free(root);
 }
