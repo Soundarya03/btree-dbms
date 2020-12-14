@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 // A utility function to split the child of this node
 // Note that child must be full when this function is called
 void splitChild(btreeNode *node, int i, btreeNode *child)
@@ -52,13 +51,14 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
 // function is called
 void insertNonFull(btreeNode *node, int k)
 {
-   // printf("inside insertNonFull\n");
+   printf("inside insertNonFull\n");
     // Initialize index as index of rightmost element
     int i = (*node).n - 1;
 
     // If this is a leaf node
     if ((*node).leaf == 1)
     {
+        printf("-Inside if\n");
         // The following loop does two things
         // a) Finds the location of new key to be inserted
         // b) Moves all greater keys to one place ahead
@@ -122,9 +122,10 @@ void insert(btreeNode *root, int k)
 
         // Make old root as child of new root
         s->children[0] = (root);
-        //printf("stops here\n");
+        printf("stops here\n");
         // Split the old root and move 1 key to the new root
         splitChild(s, 0, (root));
+        printf("working?");
 
         // New root has two children now.  Decide which of the
         // two children is going to have new key

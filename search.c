@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// #include "btree.h"
-=======
->>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 
 btreeNode * search(btreeNode *root, int k)
 {
