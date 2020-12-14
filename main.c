@@ -9,6 +9,7 @@
 
 btreeNode *root = NULL;
 btreeNode *result = NULL;
+int degree;
 
 void main()
 {
