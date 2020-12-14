@@ -1,6 +1,7 @@
 
 // A function that returns the index of the first key that is greater
 // or equal to k
+#define M 3
 int findKey(int k, btreeNode *node);
 
 // A wrapper function to remove the key k in subtree rooted with
@@ -90,9 +91,15 @@ void removeFromNode(int k, btreeNode *node)
         // child and so we recurse on the (index-1)th child. Else, we recurse on the
         // (index)th child which now has atleast t keys
         if (flag && index > p->n)
+<<<<<<< HEAD
             removeFromNode(k,p->children[index - 1]);
         else
             removeFromNode(k,p->children[index]);
+=======
+            removeFromNode(k, (p->children[index - 1]));
+        else
+            removeFromNode(k, (p->children[index]));
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
     }
     return;
 }
@@ -128,7 +135,11 @@ void removeFromNonLeaf(int index, btreeNode *node)
     {
         int pred = getPred(index, p);
         p->keys[index] = pred;
+<<<<<<< HEAD
         removeFromNode(pred,p->children[index]);
+=======
+        removeFromNode(pred, (p->children[index]));
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
     }
 
     // If the child children[index] has less that t keys, examine children[index+1].
@@ -140,7 +151,11 @@ void removeFromNonLeaf(int index, btreeNode *node)
     {
         int succ = getSucc(index, p);
         p->keys[index] = succ;
+<<<<<<< HEAD
         removeFromNode(succ, p->children[index + 1]);
+=======
+        removeFromNode(succ, (p->children[index + 1]));
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
     }
 
     // If both children[index] and children[index+1] has less that t keys,merge k and all of children[index+1]
@@ -150,7 +165,11 @@ void removeFromNonLeaf(int index, btreeNode *node)
     else
     {
         merge(index, p);
+<<<<<<< HEAD
         removeFromNode(k, p->children[index]);
+=======
+        removeFromNode(k, (p->children[index]));
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
     }
     return;
 }
@@ -158,11 +177,19 @@ void removeFromNonLeaf(int index, btreeNode *node)
 // A function to get predecessor of keys[index]
 int getPred(int index, btreeNode *p)
 {
+<<<<<<< HEAD
     btreeNode *cur = p->children[index];
 
     // Keep moving to the right most node until we reach a leaf
     while (!(cur->leaf))
         cur = cur->children[cur->n];
+=======
+    btreeNode *cur = (p->children[index]);
+
+    // Keep moving to the right most node until we reach a leaf
+    while (!(cur->leaf))
+        cur = (cur->children[cur->n]);
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 
     // Return the last key of the leaf
     return cur->keys[cur->n - 1];
@@ -172,11 +199,19 @@ int getPred(int index, btreeNode *p)
 // is present in the index-th position in the node
 int getSucc(int index, btreeNode *p)
 {
+<<<<<<< HEAD
     btreeNode *cur = p->children[index + 1];
 
     // Keep moving the left most node starting from children[index+1] until we reach a leaf
     while (!(cur->leaf))
         cur = cur->children[0];
+=======
+    btreeNode *cur = (p->children[index + 1]);
+
+    // Keep moving the left most node starting from children[index+1] until we reach a leaf
+    while (!(cur->leaf))
+        cur = (cur->children[0]);
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 
     // Return the first key of the leaf
     return cur->keys[0];
@@ -194,7 +229,11 @@ void fill(int index, btreeNode *node)
 
     // If the next child(children[index+1]) has more than t-1 keys, borrow a key
     // from that child
+<<<<<<< HEAD
     else if (index != p->n && p->children[index + 1]->n >=M)
+=======
+    else if (index != p->n && p->children[index + 1]->n >= M)
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
         borrowFromNext(index, p);
 
     // Merge children[index] with its sibling
@@ -215,8 +254,13 @@ void fill(int index, btreeNode *node)
 void borrowFromPrev(int index, btreeNode *node)
 {
     btreeNode *p = node;
+<<<<<<< HEAD
     btreeNode *child = p->children[index];
     btreeNode *sibling = p->children[index - 1];
+=======
+    btreeNode *child = (p->children[index]);
+    btreeNode *sibling = (p->children[index - 1]);
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 
     // The last key from children[index-1] goes up to the parent and key[index-1]
     // from parent is inserted as the first key in children[index]. Thus, the  loses
@@ -255,8 +299,13 @@ void borrowFromPrev(int index, btreeNode *node)
 void borrowFromNext(int index, btreeNode *node)
 {
     btreeNode *p = node;
+<<<<<<< HEAD
     btreeNode *child = p->children[index];
     btreeNode *sibling = p->children[index + 1];
+=======
+    btreeNode *child = (p->children[index]);
+    btreeNode *sibling = (p->children[index + 1]);
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 
     // keys[index] is inserted as the last key in children[index]
     child->keys[(child->n)] = p->keys[index];
@@ -293,8 +342,13 @@ void borrowFromNext(int index, btreeNode *node)
 void merge(int index, btreeNode *node)
 {
     btreeNode *p = node;
+<<<<<<< HEAD
     btreeNode *child = p->children[index];
     btreeNode *sibling = p->children[index + 1];
+=======
+    btreeNode *child = (p->children[index]);
+    btreeNode *sibling = (p->children[index + 1]);
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 
     // Pulling a key from the current node and inserting it into (t-1)th
     // position of children[index]
@@ -351,7 +405,11 @@ void removeKey(btreeNode *root, int k)
             root = NULL;
         else
         {
+<<<<<<< HEAD
             root = root->children[0];
+=======
+            root = (root->children[0]);
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
         }
         // Free the old root
         free(p);

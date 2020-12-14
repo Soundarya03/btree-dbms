@@ -15,13 +15,21 @@ void display(btreeNode *p)
         // If this is not leaf, then before printing key[i],
         // traverse the subtree rooted with child C[i].
         if (!(p->leaf))
+<<<<<<< HEAD
             display(p->children[i]);
+=======
+            display((p->children[i]));
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
         printf("%d ", p->keys[i]);
     }
 
     // Print the subtree rooted with last child
     if (!(p->leaf))
+<<<<<<< HEAD
         display(p->children[i]);
+=======
+        display((p->children[i]));
+>>>>>>> 929150815752054943185c902ba0f7d00e18a21b
 }
 
 /*void main()

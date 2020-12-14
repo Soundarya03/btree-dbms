@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// #include "btree.h"
+#include "btree.h"
 #include "insert.c"
 #include "search.c"
 #include "delete.c"
@@ -12,16 +12,17 @@ btreeNode *result = NULL;
 
 void main()
 {
+    printf("B-Tree\n");
+
     root = (btreeNode *)malloc(sizeof(btreeNode));
     (*root).leaf = 1; //it's a leaf, it has no children as of now
     (*root).n = 1;    // Update number of keys in root
-
 
     int ch, value;
     char choice;
 menu:
     printf("=====MENU=====\n");
-    printf("1.Insert\n2.Delete\n3.Search\n4.Display\n5.Exit");
+    printf("1.Insert\n2.Delete\n3.Search\n4.Display\n5.Exit\n");
     scanf("%d", &ch);
     switch (ch)
     {
@@ -30,8 +31,8 @@ menu:
         printf("Enter value to be inserted\n");
         scanf("%d", &value);
         insert(root, value);
-        printf("Insert another value?Press y to insert,any other key to go back to menu\n");
-        scanf("%c", &choice);
+        printf("Insert another value? Press y to insert,any other key to go back to menu\n");
+        scanf(" %c", &choice);
         if (choice == 'y')
             goto ins;
         else
@@ -58,7 +59,7 @@ menu:
         else
             printf("Value not present in tree");
         printf("Search for another value?Press y to search,any other key to go back to menu\n");
-        scanf("%c", &choice);
+        scanf(" %c", &choice);
 
         if (choice == 'y')
             goto search;
