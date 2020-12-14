@@ -1,4 +1,4 @@
-#include "btree.h"
+// #include "btree.h"
 
 btreeNode * search(btreeNode *root, int k)
 {
@@ -16,5 +16,5 @@ btreeNode * search(btreeNode *root, int k)
     if (p->leaf == 1)
         return NULL;
 
-    return search(&(p->children[++i]), k); // recursive call
+    return search((p->children[++i]), k); // recursive call
 }

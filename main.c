@@ -9,16 +9,13 @@
 
 btreeNode *root = NULL;
 btreeNode *result = NULL;
-int degree;
 
 void main()
 {
-    printf("Enter the degree of the tree ");
-    scanf("%d", &degree);
     root = (btreeNode *)malloc(sizeof(btreeNode));
     (*root).leaf = 1; //it's a leaf, it has no children as of now
     (*root).n = 1;    // Update number of keys in root
-    (*root).t = degree;
+
 
     int ch, value;
     char choice;
