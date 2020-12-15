@@ -1,18 +1,13 @@
 
 btreeNode *search(btreeNode *root, int k)
 {
-     if(root==NULL){
-        printf("Empty B-tree");
-        return;
+     if(root->n==0){
+        printf("Empty B-tree!!  ");
+        return NULL;
     }
     //btreeNode *p = root; // first points to the root node
     int x = root->n; // n is the number of keys in the node
-    printf("Searching in root, which contains:- ");
-   
-    for (int j = 0; j < root->n; j++)
-    {
-        printf(" %d ", root->keys[j]);
-    }
+
     int i = 0;
     while (i < x && k > (root->keys[i])) // to find the first greater key than "k"
         i++;                             // increment until the condition results in false
@@ -25,6 +20,5 @@ btreeNode *search(btreeNode *root, int k)
     if (root->leaf == 1)
         return NULL;
 
-    //i++; YOU CULPRIT
     return search((root->children[i]), k); // recursive call
 }
