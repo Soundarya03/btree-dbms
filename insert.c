@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "btree.h"
 
-// A utility function to split the child of this node
+// A function to split the child of this node
 // Note that child must be full when this function is called
 void splitChild(btreeNode *node, int i, btreeNode *child)
 {
-    //printf("inside splitChild\n");
     // Create a new node which is going to store (t-1) keys
     // of child
 
@@ -46,21 +44,6 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
 
     // Increment count of keys in this node
     ((*node).n)++;
-
-    for (int l = 0; l < node->n; l++)
-    {
-        printf("%d", node->keys[l]);
-    }
-    printf("\n");
-    for (int l = 0; l < z->n; l++)
-    {
-        printf("%d", z->keys[l]);
-    }
-    printf("\n");
-    for (int l = 0; l < child->n; l++)
-    {
-        printf("%d", child->keys[l]);
-    }
 }
 
 // A utility function to insert a new key in this node
@@ -68,7 +51,6 @@ void splitChild(btreeNode *node, int i, btreeNode *child)
 // function is called
 void insertNonFull(btreeNode *node, int k)
 {
-    // printf("inside insertNonFull\n");
     // Initialize index as index of rightmost element
     int i = (*node).n - 1;
 
@@ -112,28 +94,17 @@ void insertNonFull(btreeNode *node, int k)
 
 void insert(btreeNode **root, int k)
 {
-    //printf("inside insert - ");
-    /*
-    // If tree is empty
-    if (!(*root))
-    {
-        // Allocate memory for root
-        
-    }*/
 
     // If root is full, then tree grows in height
     if ((*root)->n == (2 * M) - 1)
     {
-        //printf("inside the if\n");
         // Allocate memory for new root
         btreeNode *s;
         s = (btreeNode *)malloc(sizeof(btreeNode));
         if (!s)
             printf("memory allocation NOT successful\n");
-        printf("malloc done successfully\n");
 
         s->n = 0;
-        // printf("n assigned\n");
         s->leaf = 0; //not a leaf, obviously
 
         // Make old root as child of new root
@@ -153,17 +124,7 @@ void insert(btreeNode **root, int k)
 
         // Change root
         (*root) = s;
-        for (int l = 0; l < (*root)->n; l++)
-        {
-            printf("%d", (*root)->keys[l]);
-        }
     }
     else // If root is not full, call insertNonFull for root
         insertNonFull((*root), k);
 }
-
-/*
-void main()
-{
-    //printf("Hello world!");
-}*/
