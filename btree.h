@@ -6,8 +6,8 @@
 
 typedef struct _node
 {
-    int keys[M - 1];           //array of keys
-    struct _node *children[M]; //array of POINTERS children;
+    int keys[(2 * M) - 1];         //array of keys
+    struct _node *children[2 * M]; //array of POINTERS children;
 
     //const int t;    //minimum degree(no. of keys that should be there)
     int n;          //current no. of keys in this node
