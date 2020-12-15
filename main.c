@@ -13,7 +13,7 @@ int degree;
 
 void main()
 {
-    printf("B-Tree\n");
+    printf("B-Tree Operations\n");
 
     root = (btreeNode *)malloc(sizeof(btreeNode));
     (*root).leaf = 1; //it's a leaf, it has no children as of now
@@ -24,6 +24,7 @@ void main()
 menu:
     printf("=====MENU=====\n");
     printf("1.Insert\n2.Delete\n3.Search\n4.Display\n5.Exit\n");
+    printf("\nEnter your choice\n");
     scanf("%d", &ch);
     switch (ch)
     {
@@ -35,8 +36,9 @@ menu:
         printf("\nRoot now contains:-\n");
         for (int l = 0; l < root->n; l++)
         {
-            printf("%d", root->keys[l]);
+            printf("%d  ", root->keys[l]);
         }
+        printf("\n");
         printf("Insert another value? Press y to insert,any other key to go back to menu\n");
         scanf(" %c", &choice);
         if (choice == 'y')
@@ -44,17 +46,18 @@ menu:
         else
             goto menu;
         break;
-    // case 2:
-    // del:
-    //     printf("Enter the value to be deleted\n");
-    //     scanf("%d", &value);
-    //     removeKey(root, value);
-    //     printf("Delete another value?Press y to delete,any other key to go back to menu\n");
-    //     if (choice == 'y')
-    //         goto del;
-    //     else
-    //         goto menu;
-    //     break;
+    case 2:
+    del:
+        printf("Enter the value to be deleted\n");
+        scanf("%d", &value);
+        removeKey(root, value);
+        printf("Delete another value?Press y to delete,any other key to go back to menu\n");
+        scanf(" %c", &choice);
+        if (choice == 'y')
+            goto del;
+        else
+            goto menu;
+        break;
     case 3:
     search:
         printf("Enter the value to be searched\n");
@@ -75,12 +78,12 @@ menu:
     case 4:
         printf("The b-tree traversed in order....\n");
         display(root);
-        printf("Press any key to continue....\n");
+        printf("\n\nPress any key to continue....\n");
         scanf(" %c", &choice);
         goto menu;
         break;
     case 5:
-        printf("Exiting Menu");
+        printf("Exiting Menu\n");
         exit(0);
     default:
         printf("Invalid input.Try again\n");

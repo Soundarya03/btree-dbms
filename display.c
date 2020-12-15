@@ -1,10 +1,9 @@
 #include <stdio.h>
-//#include "btree.h"
+
 
 void display(btreeNode *p)
 {
     int i;
-    printf("Display function reached\n");
     for (i = 0; i < (p->n); i++)
     {
         // If this is not leaf, then before printing key[i],
@@ -13,7 +12,7 @@ void display(btreeNode *p)
         {
             display((p->children[i]));
         }
-        printf("%d ", p->keys[i]);
+        printf("%d  ", p->keys[i]);
     }
 
     // Print the subtree rooted with last child
@@ -21,7 +20,3 @@ void display(btreeNode *p)
         display((p->children[i]));
 }
 
-/*void main()
-{
-    //printf("Hello world!");
-}*/
