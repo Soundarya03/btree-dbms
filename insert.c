@@ -57,6 +57,7 @@ void insertNonFull(btreeNode *node, int k)
     // If this is a leaf node
     if ((*node).leaf == 1)
     {
+        printf("-Inside if\n");
         // The following loop does two things
         // a) Finds the location of new key to be inserted
         // b) Moves all greater keys to one place ahead

@@ -314,12 +314,12 @@ void merge(int index, btreeNode *node)
 
     // Moving all keys after index in the current node one step before -
     // to fill the gap created by moving keys[index] to children[index]
-    for (int i = index + 1; i < sibling->n; ++i)
+    for (int i = index + 1; i < p->n; ++i)
         p->keys[i - 1] = p->keys[i];
 
     // Moving the child pointers after (index+1) in the current node one
     // step before
-    for (int i = index + 2; i <= sibling->n; ++i)
+    for (int i = index + 2; i <= p->n; ++i)
         p->children[i - 1] = p->children[i];
 
     // Updating the key count of child and the current node

@@ -76,7 +76,7 @@ menu:
             goto menu;
         break;
     case 4:
-        printf("The b-tree traversed in order....\n");
+        printf("The b-tree traversed in order : \n");
         display(root);
         printf("\n\nPress any key to continue....\n");
         scanf(" %c", &choice);
