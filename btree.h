@@ -1,7 +1,7 @@
 //this file can contain the data structure definition
 #include <stdio.h>
 #include <string.h>
-#define M 3
+#define M 2
 //typedef struct btreeNode *btreePointer;
 
 typedef struct _node
@@ -14,5 +14,4 @@ typedef struct _node
     short int leaf; //0 OR 1 : whether the node is a leaf or not
 
 } btreeNode;
-
 

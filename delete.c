@@ -1,7 +1,7 @@
 
 // A function that returns the index of the first key that is greater
 // or equal to k
-#define M 3
+
 int findKey(int k, btreeNode *node);
 
 // A wrapper function to remove the key k in subtree rooted with

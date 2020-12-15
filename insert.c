@@ -94,7 +94,6 @@ void insertNonFull(btreeNode *node, int k)
 
 void insert(btreeNode **root, int k)
 {
-
     // If root is full, then tree grows in height
     if ((*root)->n == (2 * M) - 1)
     {
