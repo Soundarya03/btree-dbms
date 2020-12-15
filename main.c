@@ -17,7 +17,7 @@ void main()
 
     root = (btreeNode *)malloc(sizeof(btreeNode));
     (*root).leaf = 1; //it's a leaf, it has no children as of now
-    (*root).n = 1;    // Update number of keys in root
+    (*root).n = 0;    // Update number of keys in root
 
     int ch, value;
     char choice;
@@ -31,7 +31,12 @@ menu:
     ins:
         printf("Enter value to be inserted\n");
         scanf("%d", &value);
-        insert(root, value);
+        insert(&root, value);
+        printf("\nRoot now contains:-\n");
+        for (int l = 0; l < root->n; l++)
+        {
+            printf("%d", root->keys[l]);
+        }
         printf("Insert another value? Press y to insert,any other key to go back to menu\n");
         scanf(" %c", &choice);
         if (choice == 'y')
@@ -56,10 +61,10 @@ menu:
         scanf("%d", &value);
         result = search(root, value);
         if (result != NULL)
-            printf("Value %d is present\n", 1);
+            printf("Value is present\n");
         else
-            printf("Value not present in tree");
-        printf("Search for another value?Press y to search,any other key to go back to menu\n");
+            printf("Value not present in tree\n");
+        printf("Search for another value? Press y to search,any other key to go back to menu\n");
         scanf(" %c", &choice);
 
         if (choice == 'y')
@@ -68,7 +73,11 @@ menu:
             goto menu;
         break;
     case 4:
+        printf("The b-tree traversed in order....\n");
         display(root);
+        printf("Press any key to continue....\n");
+        scanf(" %c", &choice);
+        goto menu;
         break;
     case 5:
         printf("Exiting Menu");
