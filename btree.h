@@ -15,9 +15,4 @@ typedef struct _node
 
 } btreeNode;
 
-/*
-void main()
-{
-    printf("Hello world!");
-}
-*/
+
