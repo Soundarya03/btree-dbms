@@ -31,7 +31,13 @@ menu:
     ins:
         printf("Enter value to be inserted\n");
         scanf("%d", &value);
-        insert(&root, value);
+
+        result = searchInsert(root, value);
+        if (result != NULL)
+            printf("Value is already present in the B-Tree, please refrain from inserting duplicate values\n");
+        else
+            insert(&root, value);
+    
         printf("\nRoot now contains:-\n");
         for (int l = 0; l < root->n; l++)
         {
